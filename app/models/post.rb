@@ -20,4 +20,8 @@ class Post < ActiveRecord::Base
   def down_votes
     self.votes.where(vote: false).size
   end
+
+  def already_voted?(post, creator)
+    post.votes.where(creator: creator)
+  end
 end
